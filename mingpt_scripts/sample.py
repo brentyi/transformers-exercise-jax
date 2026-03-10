@@ -4,10 +4,10 @@ import dataclasses
 import pathlib
 from typing import Dict, Tuple, cast
 
-import dcargs
 import fifteen
 import jax
 import numpy as onp
+import tyro
 from jax import numpy as jnp
 from tqdm.auto import tqdm
 
@@ -83,7 +83,7 @@ def sample_from_logits(
     return jax.random.categorical(key0, logits), key1
 
 
-def main(args: Args):
+def main(args: Args) -> None:
     experiment = fifteen.experiments.Experiment(
         data_dir=pathlib.Path("./experiments/") / args.experiment_name
     ).assert_exists()
@@ -130,4 +130,4 @@ def main(args: Args):
 
 if __name__ == "__main__":
     fifteen.utils.pdb_safety_net()
-    main(dcargs.parse(Args))
+    main(tyro.cli(Args))

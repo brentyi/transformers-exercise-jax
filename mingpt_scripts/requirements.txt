@@ -3,7 +3,7 @@ jax
 jaxlib
 jax_dataclasses
 tqdm
-dcargs
+tyro
 git+https://github.com/brentyi/fifteen.git
 # tensorflow is needed for tensorboard logging in JAX
 tensorflow

@@ -1,8 +1,9 @@
 """Script for training a GPT model on some text corpus. Pass in --help flag for options."""
+
 import dataclasses
 import pathlib
 
-import dcargs
+import tyro
 import fifteen
 import jax
 import jax_dataclasses as jdc
@@ -45,7 +46,7 @@ class TrainArgs:
 
 def main() -> None:
     fifteen.utils.pdb_safety_net()
-    train_args = dcargs.parse(TrainArgs)
+    train_args = tyro.cli(TrainArgs)
 
     # Set up experiment, determine training devices.
     experiment = fifteen.experiments.Experiment(
